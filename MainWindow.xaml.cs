@@ -29,5 +29,15 @@ namespace Database
         {
             new Exercise1().Show();
         }
+
+        private void exercise2_button_Click(object sender, RoutedEventArgs e)
+        {
+            new Exercise2().Show();
+        }
+
+        private void exercise3_button_Click(object sender, RoutedEventArgs e)
+        {
+            new Exercise3().Show();
+        }
     }
 }

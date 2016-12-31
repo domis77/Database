@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Database"
         mc:Ignorable="d"
-        Title="Exercise2" Height="600" Width="600">
+        Title="Exercise2" Height="800" Width="600">
     <Grid>
-        <Button x:Name="browseJson_button" Content="Browse... [JSON]" HorizontalAlignment="Left" Height="25" Margin="25,10,0,0" VerticalAlignment="Top" Width="263" Click="browseJson_button_Click"/>
-        <Button x:Name="browseSqlDatabase_button" Content="Browse Sql Database..." HorizontalAlignment="Left" Height="25" Margin="293,10,0,0" VerticalAlignment="Top" Width="277" Click="browseSqlDatabase_button_Click"/>
+        <Button x:Name="browseJson_button" Content="Browse... [JSON]" HorizontalAlignment="Left" Height="196" Margin="10,26,0,0" VerticalAlignment="Top" Width="235" Click="browseJson_button_Click"/>
 
-        <Label x:Name="label" Content="Sort by:" HorizontalAlignment="Left" Height="30" Margin="25,40,0,0" VerticalAlignment="Top" Width="240" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Background="#FFD4D2D2"/>
-        <ComboBox x:Name="sortBy_comboBox" HorizontalAlignment="Left" Height="30" Margin="270,40,0,0" VerticalAlignment="Top" Width="300">
+        <Label x:Name="label" Content="Sort by:" HorizontalAlignment="Left" Height="28" Margin="10,246,0,0" VerticalAlignment="Top" Width="250" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Background="#FFD4D2D2"/>
+        <ComboBox x:Name="sortBy_comboBox" HorizontalAlignment="Left" Height="28" Margin="265,246,0,0" VerticalAlignment="Top" Width="312">
             <ComboBoxItem Content="First name" Selected="ComboBoxItem_Selected_firstName"/>
             <ComboBoxItem Content="Last name" Selected="ComboBoxItem_Selected_lastName"/>
             <ComboBoxItem Content="Post code" Selected="ComboBoxItem_Selected_postCode"/>
@@ -19,7 +18,7 @@
             <ComboBoxItem Content="Street" Selected="ComboBoxItem_Selected_street"/>
         </ComboBox>
 
-        <ListView x:Name="addressBook_listView" HorizontalAlignment="Left" Height="461" Margin="25,80,0,0" VerticalAlignment="Top" Width="550">
+        <ListView x:Name="addressBook_listView" HorizontalAlignment="Left" Height="281" Margin="10,279,0,0" VerticalAlignment="Top" Width="572">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="First name" DisplayMemberBinding="{Binding firstName}"/>
@@ -30,5 +29,51 @@
                 </GridView>
             </ListView.View>
         </ListView>
+
+        <Label x:Name="label1" Content="Data from Sql Database" HorizontalAlignment="Left" Height="25" Margin="275,10,0,0" VerticalAlignment="Top" Width="307" HorizontalContentAlignment="Center" Background="#FF999999"/>
+
+        <Label x:Name="label_Copy" Content="Server:" HorizontalAlignment="Left" Height="25" Margin="265,51,0,0" VerticalAlignment="Top" Width="72" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="server_textBox" HorizontalAlignment="Left" Height="25" Margin="342,51,0,0" TextWrapping="Wrap" Text="localhost&#x9;" VerticalAlignment="Top" Width="241"/>
+        <Label x:Name="label_Copy1" Content="Database:" HorizontalAlignment="Left" Height="26" Margin="265,82,0,0" VerticalAlignment="Top" Width="72" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="database_textBox" HorizontalAlignment="Left" Height="26" Margin="342,82,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
+
+        <Label x:Name="label_Cop1" Content="Table:" HorizontalAlignment="Left" Height="26" Margin="269,113,0,0" VerticalAlignment="Top" Width="72" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="table_textBox" HorizontalAlignment="Left" Height="26" Margin="341,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
+
+        <Label x:Name="label_Copy2" Content="User:" HorizontalAlignment="Left" Height="25" Margin="265,149,0,0" VerticalAlignment="Top" Width="72" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="user_textBox" HorizontalAlignment="Left" Height="25" Margin="342,148,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
+        <Label x:Name="label_Copy3" Content="Password:" HorizontalAlignment="Left" Height="26" Margin="265,180,0,0" VerticalAlignment="Top" Width="72" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="password_textBox" HorizontalAlignment="Left" Height="26" Margin="342,179,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="241"/>
+        <Button x:Name="connectDB_button" Content="CONNECT" HorizontalAlignment="Left" Height="25" Margin="265,212,0,0" VerticalAlignment="Top" Width="318" Click="connectDB_button_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF6BF52B" Offset="0"/>
+                    <GradientStop Color="#FF367C16" Offset="0.426"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+
+        <Label x:Name="label2" Content="Add record to Database" HorizontalAlignment="Left" Height="33" Margin="10,584,0,0" VerticalAlignment="Top" Width="567" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="#FFC3C3C3"/>
+
+        <Label x:Name="label3" Content="First Name:" HorizontalAlignment="Left" Height="30" Margin="10,640,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="addFirstName_textBox" HorizontalAlignment="Left" Height="30" Margin="107,640,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+
+        <Label x:Name="label3_Copy" Content="Last Name:" HorizontalAlignment="Left" Height="30" Margin="10,675,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="addLastName_textBox" HorizontalAlignment="Left" Height="30" Margin="107,675,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+
+        <Label x:Name="label3_Copy1" Content="Post Code:" HorizontalAlignment="Left" Height="30" Margin="10,710,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="addPostCode_textBox" HorizontalAlignment="Left" Height="30" Margin="107,710,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="184"/>
+
+        <Label x:Name="label3_Copy2" Content="City:" HorizontalAlignment="Left" Height="30" Margin="301,642,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="addCity_textBox" HorizontalAlignment="Left" Height="30" Margin="398,642,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        
+        <Label x:Name="label3_Copy3" Content="Street:" HorizontalAlignment="Left" Height="30" Margin="301,675,0,0" VerticalAlignment="Top" Width="90"/>
+        <TextBox x:Name="addStreet_textBox" HorizontalAlignment="Left" Height="30" Margin="398,675,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="179"/>
+        
+        <Button x:Name="addRecord_button" Content="Add" HorizontalAlignment="Left" Height="30" Margin="311,710,0,0" VerticalAlignment="Top" Width="266" Click="addRecord_button_Click"/>
+
+
+
     </Grid>
 </Window>

@@ -27,6 +27,8 @@ namespace Database
     public partial class Exercise2 : Window
     {
         AddressBook addressBook = new AddressBook();
+        DBConnectSingleton DBConnection = null;
+
 
         public Exercise2()
         {
@@ -36,11 +38,9 @@ namespace Database
 
 
 
-
-
         private void browseJson_button_Click(object sender, RoutedEventArgs e)
         {
-           OpenFileDialog openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Select json file";
             openFileDialog.Filter = "json file (*.json)|*.json";
             openFileDialog.Multiselect = false;
@@ -56,11 +56,6 @@ namespace Database
                         string json = streamReader.ReadToEnd();
 
                         addressBook.addressList = JsonConvert.DeserializeObject<List<Person>>(json);
-                        foreach (var i in addressBook.addressList)
-                        {
-                            Console.WriteLine(i.ToString());
-                        }
-
                         addressBook_listView.ItemsSource = addressBook.addressList;
                     }
                 }
@@ -73,22 +68,59 @@ namespace Database
         }
 
 
-        private void browseSqlDatabase_button_Click(object sender, RoutedEventArgs e)
+        private void connectDB_button_Click(object sender, RoutedEventArgs e)
         {
-            ConnectSqlDB connectSqlDB = new ConnectSqlDB();
+            DBConnection = DBConnectSingleton.Instance();
+            DBConnection.setConnectionData(server_textBox.Text, database_textBox.Text, user_textBox.Text, password_textBox.Text);
+            DBConnection.OpenConnection();
+            
+            string table = table_textBox.Text.ToString();
+            string getAllData = "SELECT * FROM " + table;
+            
+            MySqlCommand command = new MySqlCommand(getAllData, DBConnection.getConnection());
+            MySqlDataReader dataReader = command.ExecuteReader();
 
-            Thread connectSqlDatabase = new Thread(Exercise2.connectSqlDatabase);
-            connectSqlDatabase.Start(connectSqlDB);
-            connectSqlDatabase.Join();
-            MySqlConnection connection = connectSqlDB.getConncetion();
 
+           addressBook.addressList = new List<Person>();                       
+            while (dataReader.Read())
+            {
+                addressBook.addressList.Add(new Person()
+                {
+                    firstName = dataReader.GetValue(0).ToString(),
+                    lastName = dataReader.GetValue(1).ToString(),
+                    postCode = dataReader.GetValue(2).ToString(),
+                    city = dataReader.GetValue(3).ToString(),
+                    street = dataReader.GetValue(4).ToString()
+                });
+            }
+            dataReader.Close();
+
+
+            addressBook_listView.ItemsSource = addressBook.addressList;            
         }
 
-
-        private static void connectSqlDatabase(object connectSqlDB)
+        private void addRecord_button_Click(object sender, RoutedEventArgs e)
         {
-            ConnectSqlDB connectSqWindow = (Database.ConnectSqlDB).connectSqlDB;
-            (Window)connectSqlDB.Show();
+            if(DBConnection != null)
+            {
+                string table = table_textBox.Text.ToString();
+                string apsCommMark = "', '";
+                string insertRecord = "INSERT INTO " + table + " (firstName, lastName, postCode, city, street) VALUES " +
+                    "('" + addFirstName_textBox.Text.ToString() + apsCommMark + addLastName_textBox.Text.ToString() + apsCommMark +
+                    addPostCode_textBox.Text.ToString() + apsCommMark + addCity_textBox.Text.ToString() + apsCommMark +
+                    addStreet_textBox.Text.ToString() + "')";
+
+                MySqlCommand command = new MySqlCommand(insertRecord, DBConnection.getConnection());
+                command.ExecuteNonQuery();
+
+                System.Windows.MessageBox.Show("Recor added!");
+
+                connectDB_button_Click(null, null); //refresh view
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Database unconnected!");
+            }
         }
 
 
@@ -161,7 +193,6 @@ namespace Database
             listView.ItemsSource = null;
             listView.ItemsSource = addressBook.addressList;
         }
-
 
     }
 

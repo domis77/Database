@@ -61,7 +61,7 @@ namespace Database
     public class DBConnectSingleton
     {
         private static DBConnectSingleton DBConnectInstance;
-        public MySqlConnection connection;
+        private MySqlConnection connection;
         private bool connect = false;
 
         private string connectionData;
@@ -82,6 +82,11 @@ namespace Database
         {
             connectionData = "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + user + ";" + "PASSWORD=" + password + ";";
             connection = new MySqlConnection(connectionData);
+        }
+
+        public MySqlConnection getConnection()
+        {
+            return connection;
         }
 
 

@@ -11,13 +11,13 @@
         <TextBox x:Name="server_textBox" HorizontalAlignment="Left" Height="20" Margin="100,20,0,0" TextWrapping="Wrap" Text="localhost&#x9;" VerticalAlignment="Top" Width="282"/>
 
         <Label x:Name="label_Copy" Content="Database:" HorizontalAlignment="Left" Height="20" Margin="10,45,0,0" VerticalAlignment="Top" Width="85" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="database_textBox" HorizontalAlignment="Left" Height="20" Margin="100,45,0,0" TextWrapping="Wrap" Text="exerciseDB" VerticalAlignment="Top" Width="282"/>
+        <TextBox x:Name="database_textBox" HorizontalAlignment="Left" Height="20" Margin="100,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282"/>
 
         <Label x:Name="label_Copy1" Content="User:" HorizontalAlignment="Left" Height="20" Margin="10,70,0,0" VerticalAlignment="Top" Width="85" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="user_textBox" HorizontalAlignment="Left" Height="20" Margin="100,70,0,0" TextWrapping="Wrap" Text="domis77" VerticalAlignment="Top" Width="282"/>
+        <TextBox x:Name="user_textBox" HorizontalAlignment="Left" Height="20" Margin="100,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282"/>
 
         <Label x:Name="label_Copy2" Content="Password:" HorizontalAlignment="Left" Height="20" Margin="10,95,0,0" VerticalAlignment="Top" Width="85" FontSize="9" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="password_textBox" HorizontalAlignment="Left" Height="20" Margin="100,95,0,0" TextWrapping="Wrap" Text="windows" VerticalAlignment="Top" Width="282"/>
+        <TextBox x:Name="password_textBox" HorizontalAlignment="Left" Height="20" Margin="100,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="282"/>
 
         <Button x:Name="connect_button" Content="CONNECT" HorizontalAlignment="Left" Height="20" Margin="10,120,0,0" VerticalAlignment="Top" Width="372" Click="connect_button_Click">
             <Button.Background>
