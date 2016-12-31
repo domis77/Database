@@ -24,5 +24,10 @@ namespace Database
         {
             InitializeComponent();
         }
+
+        private void exercise1_button_Click(object sender, RoutedEventArgs e)
+        {
+            new Exercise1().Show();
+        }
     }
 }
